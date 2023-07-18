@@ -33,7 +33,7 @@ const [cartItemNumber, setcartItemNumber] = useState<number>(0)
           <ul className="flex space-x-4">
             {NavbarArray.map((item: NavbarItemType, index: number) => (
               <li key={index} className="flex items-center relative rounded-md px-3 py-1 hover:bg-gray-100 cursor-pointer group">
-                <Link className="group-hover:underline" href={item.href}>
+                <Link key={index} className="group-hover:underline" href={item.href}>
                   {item.label}
                 </Link>
                 {item.IsdropDown ? (
@@ -48,7 +48,7 @@ const [cartItemNumber, setcartItemNumber] = useState<number>(0)
                   <div
                     className={`invisible group-hover:visible absolute top-7 left-0 py-2 px-4  bg-gray-100 font-light min-w-[7.8rem]`}
                   >
-                    <DropDown item={item} />
+                    <DropDown key={index} item={item} />
                   </div>
                 ) : (
                   ""

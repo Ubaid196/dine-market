@@ -39,16 +39,16 @@ const Expand: FC<{ item: NavbarItemType }> = ({ item }) => {
       <div className="flex flex-col space-y-1 mt-2">
         {isTimeout &&
           item.dropDownData?.map((item: NavbarItemType, index: number) => (
-            <ul>
+            
             <li key={index}>
             <Link
               className="hover:bg-gray-50 rounded-md px-5 py-1 duration-300"
               href={item.href}
+              key={index}
             >
               {item.label}
             </Link>
             </li>
-            </ul>
           ))}
       </div>
     </li>
