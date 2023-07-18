@@ -7,6 +7,7 @@ import { HiOutlineChevronDown } from "react-icons/hi";
 import { useState } from "react";
 import { FC } from "react";
 
+
 const Expand: FC<{ item: NavbarItemType }> = ({ item }) => {
   const [isExpanded, setExpanded] = useState<boolean>(false);
   const [isTimeout, setTimeOut] = useState<boolean>(false);
@@ -38,13 +39,14 @@ const Expand: FC<{ item: NavbarItemType }> = ({ item }) => {
       <div className="flex flex-col space-y-1 mt-2">
         {isTimeout &&
           item.dropDownData?.map((item: NavbarItemType, index: number) => (
+            <li key={index}>
             <Link
-            key={index}
               className="hover:bg-gray-50 rounded-md px-5 py-1 duration-300"
               href={item.href}
             >
               {item.label}
             </Link>
+            </li>
           ))}
       </div>
     </li>
