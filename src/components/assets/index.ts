@@ -1,0 +1,10 @@
+export {default as heroPosterImg} from "./Images/hero-poster.png"
+export {default as brandF1} from "./Images/Featured1.webp"
+export {default as brandF2} from "./Images/Featured2.webp"
+export {default as brandF3} from "./Images/Featured3.webp"
+export {default as brandF4} from "./Images/Featured4.webp"
+export {default as brandFJ} from "./Images/featurejewe.webp"
+export {default as Event1} from "./Images/event1.png"
+export {default as Event2} from "./Images/event2.png"
+export {default as Event3} from "./Images/event3.png"
+
