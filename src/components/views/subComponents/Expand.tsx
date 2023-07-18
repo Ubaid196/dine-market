@@ -21,8 +21,8 @@ const Expand: FC<{ item: NavbarItemType }> = ({ item }) => {
   }
 
   return (
-    <li className={`${isExpanded ? "h-48" : "h-12"} duration-300  list-none  `}>
-      <div
+    <ul className={`${isExpanded ? "h-48" : "h-12"} duration-300  list-none  `}>
+      <li
         onClick={handleExpand}
         className="py-2 px-3 flex items-center hover:bg-purple-600 rounded-md duration-300 justify-between"
       >
@@ -35,12 +35,11 @@ const Expand: FC<{ item: NavbarItemType }> = ({ item }) => {
         ) : (
           ""
         )}
-      </div>
-      <div className="flex flex-col space-y-1 mt-2">
+      </li>
+      <li className="flex flex-col space-y-1 mt-2">
         {isTimeout &&
           item.dropDownData?.map((item: NavbarItemType, index: number) => (
             
-            <li key={index}>
             <Link
               className="hover:bg-gray-50 rounded-md px-5 py-1 duration-300"
               href={item.href}
@@ -48,10 +47,10 @@ const Expand: FC<{ item: NavbarItemType }> = ({ item }) => {
             >
               {item.label}
             </Link>
-            </li>
+
           ))}
-      </div>
-    </li>
+      </li>
+    </ul>
   );
 };
 
