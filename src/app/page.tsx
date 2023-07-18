@@ -5,7 +5,7 @@ import ProductCarousel from "@/components/views/ProductCarousel";
 import { useEffect } from "react";
 import { oneProductType ,responseType } from "@/components/utils/ProductsDataArrayAndTypes";
 import Jewellery from "@/components/views/Jewellery";
-import NewsLetter from "@/components/views/NewsLetter";
+import NewsLetter from "@/components/views/NewsLetter";  
 
 
 async function fetchAllProductsData() {
