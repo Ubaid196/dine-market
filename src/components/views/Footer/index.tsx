@@ -115,8 +115,8 @@ const Footer = () => {
               <h2 className="  font-bold text-xl text-primaryText1 tracking-widest mb-3">
                 Company
               </h2>
-              <nav className="list-none mb-10 space-y-3">
-                <ul>
+              <nav>
+                <ul className="list-none mb-10 space-y-3">
                 <li>
                   <Link href={""} className="text-primaryText1 ">
                     About
@@ -149,8 +149,8 @@ const Footer = () => {
               <h2 className=" font-bold text-primaryText1 tracking-widest text-xl mb-3">
                 Support
               </h2>
-              <nav className="list-none mb-10 space-y-3">
-               <ul>
+              <nav>
+               <ul className="list-none mb-10 space-y-3">
                 <li>
                   <Link href={""} className="text-primaryText1 ">
                     Support Carier
@@ -173,8 +173,8 @@ const Footer = () => {
               <h2 className=" font-bold text-primaryText1 tracking-widest text-xl mb-3">
                 Contact
               </h2>
-              <nav className="list-none mb-10 space-y-3">
-               <ul>
+              <nav>
+               <ul className="list-none mb-10 space-y-3">
                 <li>
                   <Link href={""} className="text-primaryText1 ">
                     Whatsapp
