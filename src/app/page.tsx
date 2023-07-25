@@ -22,11 +22,11 @@ export default async function Home() {
   return (
     <>
       <main>
-        {/* <Hero />
+        <Hero />
         <ProductTypes />
         <ProductCarousel ProductData={result} />
         <Jewellery />
-        <NewsLetter/> */}
+        <NewsLetter/>
        
       </main>
     </>
