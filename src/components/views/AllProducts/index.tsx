@@ -11,7 +11,7 @@ export default class AllProductsComponent extends Component<{productData:propsTy
         console.log(this.props.productData.productArray[0].price);
         
     }
-    render(){
+    render():ReactNode{
         return(
             <div onClick={this.getData}>{this.props.productData.productArray[0].price}</div>
         )
