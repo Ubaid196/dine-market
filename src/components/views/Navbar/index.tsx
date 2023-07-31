@@ -13,11 +13,21 @@ import {
 } from "@/components/utils/NavbarArrayAndTypes";
 import { HiOutlineChevronDown } from "react-icons/hi";
 import DropDown from "@/components/views/subComponents/DropDown";
-import Expand from "../subComponents/Expand";
+import Expand from "@/components/views/subComponents/Expand";
+import { useRouter } from "next/navigation";
 
 const Navbar = () => {
+  const router = useRouter();
   const [isNavbarOpen, setNavbarOpen] = useState<boolean>(false);
-const [cartItemNumber, setcartItemNumber] = useState<number>(0)
+  const [cartItemNumber, setcartItemNumber] = useState<number>(0);
+  const [searchQuery, setSearchQuery] = useState("");
+
+  function handleSearchCalledFunc(e: any) {
+    if (e.key === "Enter" && e.keyCode === 13) {
+      router.push(`/search/${searchQuery}`);
+    }
+  }
+
   return (
     <div className="sticky top-0 bg-white md:backdrop-blur-lg md:bg-opacityDownColor z-50">
       <div className=" py-5 flex justify-between items-center space-x-12">
@@ -32,7 +42,10 @@ const [cartItemNumber, setcartItemNumber] = useState<number>(0)
         <div className="hidden lg:flex justify-between items-center w-full">
           <ul className="flex space-x-4">
             {NavbarArray.map((item: NavbarItemType, index: number) => (
-              <li key={index} className="flex items-center relative rounded-md px-3 py-1 hover:bg-gray-100 cursor-pointer group">
+              <li
+                key={index}
+                className="flex items-center relative rounded-md px-3 py-1 hover:bg-gray-100 cursor-pointer group"
+              >
                 <Link className="group-hover:underline" href={item.href}>
                   {item.label}
                 </Link>
@@ -57,9 +70,14 @@ const [cartItemNumber, setcartItemNumber] = useState<number>(0)
             ))}
           </ul>
           <div className="rounded-md border flex items-center text-gray-600 px-3">
-            <CiSearch />
+            <Link href={`/search/${searchQuery}`}>
+              <CiSearch />
+            </Link>
             <input
               type="text"
+              value={searchQuery}
+              onKeyDown={handleSearchCalledFunc}
+              onChange={(e) => setSearchQuery(e.target.value)}
               className="pl-1 pr-5 py-1 w-80 focus:outline-none"
               placeholder="What you looking for"
             />
