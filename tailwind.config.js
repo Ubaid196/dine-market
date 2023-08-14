@@ -11,6 +11,7 @@ module.exports = {
       primaryWhite:"#FEECE3",
       primaryText:"#212121",
       primaryText1:"#666666",
+      primaryText2:"#000000",
       salebtnColor:"#0000FF",
       salebtnColor1:"#E1EDFF",
       promotionColor:"#0062F5",
