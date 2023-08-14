@@ -53,6 +53,7 @@ const ProductDetail: FC<{ item: oneProductType }> = ({ item }) => {
             if (subItem._key === imagePreview) {
               return (
                 <Image
+                key={index}
                   src={urlFor(subItem).width(1000).height(1000).url()}
                   alt={subItem.alt}
                   width={1000}
