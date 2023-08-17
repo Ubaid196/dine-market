@@ -6,7 +6,6 @@ import Image from "next/image";
 import Link from "next/link";
 import Logo from "/public/Logo.webp";
 import { CiSearch } from "react-icons/ci";
-import { CgShoppingCart } from "react-icons/cg";
 import {
   NavbarArray,
   NavbarItemType,
@@ -15,11 +14,12 @@ import { HiOutlineChevronDown } from "react-icons/hi";
 import DropDown from "@/components/views/subComponents/DropDown";
 import Expand from "@/components/views/subComponents/Expand";
 import { useRouter } from "next/navigation";
+import ContextWrapper from "@/global/Context";
+import Cartstate from "../subComponents/Cartstate";
 
 const Navbar = () => {
   const router = useRouter();
   const [isNavbarOpen, setNavbarOpen] = useState<boolean>(false);
-  const [cartItemNumber, setcartItemNumber] = useState<number>(0);
   const [searchQuery, setSearchQuery] = useState("");
 
   function handleSearchCalledFunc(e: any) {
@@ -29,6 +29,7 @@ const Navbar = () => {
   }
 
   return (
+    <ContextWrapper>
     <div className="sticky top-0 bg-white md:backdrop-blur-lg md:bg-opacityDownColor z-50">
       <div className=" py-5 flex justify-between items-center space-x-12">
         <Link href={"/"} className="w-36 flex-shrink-0">
@@ -82,12 +83,13 @@ const Navbar = () => {
               placeholder="What you looking for"
             />
           </div>
-          <div className="flex-shrink-0 relative w-11 h-11 bg-gray-100 rounded-full flex items-center justify-center">
+          {/* <div className="flex-shrink-0 relative w-11 h-11 bg-gray-100 rounded-full flex items-center justify-center">
             <div className="absolute top-1 right-2  bg-[#F02D34] text-xs text-white font-light rounded-full w-4 h-4 flex justify-center items-center">
               {cartItemNumber}
             </div>
             <CgShoppingCart size={24} />
-          </div>
+          </div> */}
+          <Cartstate />
         </div>
         <div onClick={() => setNavbarOpen(!isNavbarOpen)}>
           {isNavbarOpen ? (
@@ -103,6 +105,7 @@ const Navbar = () => {
       </div>
       {isNavbarOpen && <MobileNavbar />}
     </div>
+    </ContextWrapper>
   );
 };
 
