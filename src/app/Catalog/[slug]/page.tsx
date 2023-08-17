@@ -1,5 +1,6 @@
 import { responseType } from "@/components/utils/ProductsDataArrayAndTypes";
 import ProductDetail from "@/components/views/ProductDetail";
+import ContextWrapper from "@/global/Context";
 import { FC } from "react";
 
 async function fetchPreviousData(slug:string){
@@ -7,14 +8,14 @@ async function fetchPreviousData(slug:string){
 return res.json()
 }
 
-const Catalog:FC<{params:{slug:string}}>=async ({params})=>{
+const catalog:FC<{params:{slug:string}}>=async ({params})=>{
   let data: responseType =await fetchPreviousData(params.slug)
   
   return(
-    <div>
+    <ContextWrapper>
       <ProductDetail item={data.result[0]}/>
-    </div>
+    </ContextWrapper>
   )
   
 }
-export default Catalog
+export default catalog

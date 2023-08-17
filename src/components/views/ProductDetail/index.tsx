@@ -4,11 +4,12 @@ import {
   imagesType,
   oneProductType,
 } from "@/components/utils/ProductsDataArrayAndTypes";
-import { FC, useState } from "react";
+import { FC, useContext, useState } from "react";
 import imageUrlBuilder from "@sanity/image-url";
 import Image from "next/image";
 import { client } from "../../../../sanity/lib/client";
 import { CgShoppingCart } from "react-icons/cg";
+import { contextVal } from "@/global/Context";
 
 const builder = imageUrlBuilder(client);
 
@@ -17,8 +18,11 @@ function urlFor(source: any) {
 }
 
 const ProductDetail: FC<{ item: oneProductType }> = ({ item }) => {
+  let { state,dispatch } = useContext(contextVal);
   const [imagePreview, setImagePreview] = useState<string>(item.image[0]._key);
   const [quantity, setQuantity] = useState(1);
+
+
 
   function incrementTheQuantity() {
     setQuantity(quantity + 1);
@@ -29,8 +33,24 @@ const ProductDetail: FC<{ item: oneProductType }> = ({ item }) => {
     }
   }
 
+
+
+
+  function handleAddToCart(){
+    let dataToAddInCart = {
+      productId: item._id,
+      quantity:quantity,
+    }
+    dispatch({payload:"addToCart",data: dataToAddInCart});
+    
+    
+  } 
+
+
+
+
   return (
-    <div className="flex flex-col lg:flex-row justify-center items-center">
+    <div className="flex flex-col lg:flex-row justify-center items-center py-7">
       <div className="flex gap-x-4 md:gap-x-8">
         <div className="space-y-4">
           {item.image.map((subItem: imagesType, index: number) => (
@@ -53,7 +73,7 @@ const ProductDetail: FC<{ item: oneProductType }> = ({ item }) => {
             if (subItem._key === imagePreview) {
               return (
                 <Image
-                key={index}
+                  key={index}
                   src={urlFor(subItem).width(1000).height(1000).url()}
                   alt={subItem.alt}
                   width={1000}
@@ -103,12 +123,13 @@ const ProductDetail: FC<{ item: oneProductType }> = ({ item }) => {
           </div>
         </div>
         <div className="flex items-center gap-x-8">
-        <button className="text-sm md:text-lg px-4 py-2 font-semibold flex items-center bg-primaryText text-white border-t-2 border-t-gray-600 border-l-2 border-l-gray-600 border-b-2 border-b-black border-r-2 border-r-black">
-        <CgShoppingCart size={24} />
-        &nbsp;
-          Add to Cart
-        </button>
-        <p className="text-2xl text-primaryText font-semibold">${item.price}.00</p>
+          <button onClick={()=>handleAddToCart()} className="text-sm md:text-lg px-4 py-2 font-semibold flex items-center bg-primaryText text-white border-t-2 border-t-gray-600 border-l-2 border-l-gray-600 border-b-2 border-b-black border-r-2 border-r-black">
+            <CgShoppingCart size={24} />
+            &nbsp; Add to Cart
+          </button>
+          <p className="text-2xl text-primaryText font-semibold">
+            ${item.price}.00
+          </p>
         </div>
       </div>
     </div>
