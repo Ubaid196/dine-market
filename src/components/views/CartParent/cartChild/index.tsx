@@ -26,7 +26,7 @@ if(stateStorage){
   })
   setAllProductsForCart(data)
 }
-  })
+  },[allProductsOfStore])
   
  
   return (
