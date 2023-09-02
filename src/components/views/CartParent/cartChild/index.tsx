@@ -4,8 +4,17 @@ import { oneProductType } from "@/components/utils/ProductsDataArrayAndTypes";
 import Image from "next/image";
 import { useEffect, useState } from "react";
 import { RiDeleteBinLine } from "react-icons/ri";
+import imageUrlBuilder from "@sanity/image-url";
+import { client } from "../../../../../sanity/lib/client";
 
 
+
+
+const builder:any = imageUrlBuilder(client);
+
+function urlFor(source: any) {
+  return builder.image(source);
+}
 
 
 const CartComp = ({allProductsOfStore}:{allProductsOfStore:Array<oneProductType>}) => {
@@ -41,12 +50,20 @@ if(stateStorage){
 
       <div className="flex flex-col md:flex-row gap-10">
         
-        <div className="flex flex-col gap-4 basis-[69%]">
+        <div className="flex flex-col gap-10 basis-[69%]">
         {allProductsForCart &&
         allProductsForCart.map((item:oneProductType,index:number)=>(
           <div key={index} className="flex flex-shrink-0 flex-col md:flex-row  gap-6">
-          <div className="w-[14rem]">
-            <Image src="" className="rounded-xl" alt="Nothing"></Image>
+          <div className="w-64">
+            <Image 
+            className="rounded-xl"
+            height={1000}
+          width={1000}
+          src={urlFor(item.image[0])
+            .width(1000)
+            .height(1000)
+            .url()}
+          alt={item.image[0].alt}></Image>
           </div>
           <div className="space-y-3 w-full">
             <div className="flex justify-between">
@@ -59,7 +76,7 @@ if(stateStorage){
             <h3 className="text-black font-semibold">Delivery Estimation</h3>
             <h4 className="font-semibold text-yellow-400">5 Working Days</h4>
             <div className="flex justify-between items-center">
-              <p className="font-bold text-lg">{item.price}</p>
+              <p className="font-bold text-lg">${item.price}</p>
               <div className="flex gap-2 items-center text-lg">
                 <div className="select-none flex justify-center items-center w-9 h-9 rounded-full bg-gray-200 cursor-pointer">
                   -
