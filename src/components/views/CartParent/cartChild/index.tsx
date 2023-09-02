@@ -26,8 +26,7 @@ if(stateStorage){
   })
   setAllProductsForCart(data)
 }
-console.log(allProductsForCart);
-  },[])
+  })
   
  
   return (
