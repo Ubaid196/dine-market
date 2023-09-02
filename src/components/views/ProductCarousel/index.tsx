@@ -4,50 +4,6 @@ import { ReactNode, Component, FC } from "react";
 import Card from "../Card";
 
 
-// const ProductCarousel: FC<{ ProductData: Array<oneProductType> }> = ({ ProductData }) => {
-
-//   return (
-//     <div className="flex">
-//       {ProductData.map((item: oneProductType, index: number) => (
-//         <Card key={index} singleProductData={item} />
-//       ))}
-//     </div>
-//   );
-// };
-
-// export default ProductCarousel;
-
-// export default class ProductCarousel extends Component<{ ProductData: Array<oneProductType>}>{
-
-//   render(): ReactNode {
-//     const settings = {
-
-//       speed: 500,
-//       slidesToShow: 3,
-//       slidesToScroll: 1,
-
-//       responsive: [
-//         {
-//           breakpoint: 824,
-//           settings: {
-//             slidesToShow: 1,
-//             slidesToScroll: 1,
-
-//           }
-//         },
-//       ]
-//     };
-//     return(
-
-//         <Slider {...settings}>
-//         {this.props.ProductData.map((item: oneProductType, index: number) => (
-//         <Card key={index} singleProductData={item} />
-//       ))}
-//         </Slider>
-//     )
-
-//   }
-// }
 
 const ProductCarousel: FC<{ ProductData: Array<oneProductType> }> = ({
   ProductData,
