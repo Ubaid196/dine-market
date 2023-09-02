@@ -2,9 +2,7 @@
 import { oneProductType } from "@/components/utils/ProductsDataArrayAndTypes";
 import { ReactNode, Component, FC } from "react";
 import Card from "../Card";
-import Slider from "react-slick";
-import "slick-carousel/slick/slick.css";
-import "slick-carousel/slick/slick-theme.css";
+
 
 // const ProductCarousel: FC<{ ProductData: Array<oneProductType> }> = ({ ProductData }) => {
 

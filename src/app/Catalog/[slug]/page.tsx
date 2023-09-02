@@ -42,7 +42,7 @@ export async function generateStaticParams() {
     }
   ).then((res: any) => res.json());
 
-  return res.result.map((item: oneProductType, index: number) => {
+  return res.result.map((item: oneProductType) => {
     slug: item.slug;
   });
 }
